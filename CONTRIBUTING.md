@@ -1,96 +1,247 @@
-Table of Contents
-Code of Conduct
-Project Setup
-Branching Strategy
-Continuous Integration and Deployment
-GitHub Issues
-Pull Requests
-Code Quality and Security
-Versioning
-Collaborators
+# Contributing to Library System Backend
 
+Thank you for considering contributing to the **Library System Backend** project! This document provides guidelines for the development, deployment, and contribution process to ensure smooth collaboration.
 
-Code of Conduct
-We follow the Contributor Covenant Code of Conduct to ensure a welcoming environment. Please read and adhere to it when interacting in this project.
+## Table of Contents
+1. [Project Setup](#project-setup)
+2. [Development Workflow](#development-workflow)
+3. [Branching Strategy](#branching-strategy)
+4. [CI/CD Configuration](#ci-cd-configuration)
+5. [Deployment Process](#deployment-process)
+6. [Code Reviews and Pull Requests](#code-reviews-and-pull-requests)
+7. [Version Control](#version-control)
 
-Project Setup
-To get started with the project, follow these steps:
+---
 
-Clone the repository:
+### Project Setup
 
-bash
-Copy code
-git clone https://github.com/ajazire/LibraryBookManagementSystem.git
-cd CRUDApplication
-Set up the database (PostgreSQL is used by default):
+#### Prerequisites
+Before contributing, ensure you have the following tools installed on your local machine:
+- **Java 11+**: [Download Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- **Maven**: For building the project, [install Maven](https://maven.apache.org/download.cgi)
+- **Git**: [Install Git](https://git-scm.com/)
+- **Docker** (optional): For containerized deployment, [install Docker](https://www.docker.com/get-started)
+- **PostgreSQL** (or any other relational database)
 
-Create the required database as outlined in the README.md.
-Install project dependencies:
+#### Setting Up Locally
 
-Build the application using Maven:
-bash
-Copy code
-mvn clean install
-Run the application:
+1. **Clone the repository**:
+   ```bash
+   git clone [https://github.com/your-username/library-system-backend.git](https://github.com/ajazire/LibraryBookManagementSystem.git)
+   cd CRUDApplication
+   ```
 
-bash
-Copy code
-mvn spring-boot:run
-Run tests:
+2. **Database Setup**:
+   - Ensure your PostgreSQL server is running.
+   - Create a database for the application:
+     ```sql
+     CREATE DATABASE Books;
+     ```
 
-bash
-Copy code
-mvn test
-Branching Strategy
-We follow GitFlow for managing branches:
+3. **Configure the application**:
+   - Update the `application.properties` or `application.yml` file located in `src/main/resources/` with your local database credentials:
+     ```properties
+     spring.datasource.url=jdbc:postgresql://localhost:5432/library_system
+     spring.datasource.username=username
+     spring.datasource.password=password
+     ```
 
-main: The stable branch for production-ready code.
-develop: The default branch for ongoing development.
-feature/feature-name: Branch off from develop for individual features.
-release/release-version: Branch for preparing releases.
-hotfix/fix-description: For urgent bug fixes on main.
-Continuous Integration and Deployment
-We use GitHub Actions to manage CI/CD pipelines.
+4. **Build and run the application**:
+   - Build the project:
+     ```bash
+     mvn clean install
+     ```
+   - Run the application:
+     ```bash
+     mvn spring-boot:run
+     ```
 
-Continuous Integration (CI):
+5. **Testing**:
+   - To run unit and integration tests:
+     ```bash
+     mvn test
+     ```
 
-Code is automatically tested for each pull request. Ensure that all tests pass before submitting a PR.
-Continuous Deployment (CD):
+---
 
-Once changes are merged into main, the application is automatically deployed to Heroku (or another cloud platform).
-Pipeline setup:
+### Development Workflow
 
-The CI/CD pipeline includes build, testing, and deployment stages. Modify the .github/workflows files as necessary to suit your environment.
-GitHub Issues
-We use GitHub Issues to track:
+To maintain a clean and organized codebase, follow this development workflow:
 
-Bugs
-Feature requests
-Enhancements
-If you find a bug or have an idea for improvement, please open a new issue and provide as much detail as possible.
+1. **Fork the repository**.
+2. **Create a new branch** based on the `develop` branch.
+   - Use meaningful branch names, e.g., `feature/add-book-api` or `bugfix/fix-loan-issue`.
+   - Create the branch:
+     ```bash
+     git checkout -b feature/your-feature-name
+     ```
 
-Pull Requests
-Fork the repository.
-Create a new branch (feature/feature-name or fix/issue-name).
-Make your changes.
-Ensure the code passes all tests locally.
-Submit a pull request with a detailed explanation of the changes.
-All pull requests will be reviewed by project maintainers. Ensure your PR adheres to the project's coding standards.
+3. **Make your changes**:
+   - Ensure your code follows the project’s coding standards.
+   - Write tests for new features or bug fixes.
 
-Code Quality and Security
-We use CodeQL to identify potential security vulnerabilities and code quality issues.
+4. **Run tests locally** to ensure no functionality is broken:
+   ```bash
+   mvn test
+   ```
 
-Ensure that your code passes all code quality checks before creating a PR.
-Code Analysis: Run static code analysis locally using the configured tools (e.g., SonarQube, PMD).
-Versioning
-We follow Semantic Versioning for tagging releases (e.g., v1.0.0).
+5. **Commit your changes** with a clear, concise commit message:
+   ```bash
+   git commit -m "Add feature to manage book loans"
+   ```
 
-Each major version includes a release with notes on new features, bug fixes, and changes.
-Before merging to main, ensure the branch is tagged with the appropriate version:
-bash
-Copy code
-git tag -a v1.0.0 -m "Release v1.0.0"
-git push origin --tags
-Collaborators
-Collaborators are added by the repository owner and must follow the contributing guidelines.
-Ensure all contributions are made through pull requests for structured code reviews.
+6. **Push to your fork**:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+7. **Submit a Pull Request**:
+   - Open a PR against the `develop` branch.
+   - Ensure that you fill out the PR template, describing what changes have been made and their purpose.
+
+---
+
+### Branching Strategy
+
+We follow **GitFlow** to maintain an organized and efficient branching model:
+
+1. **Main Branches**:
+   - `main`: The production-ready branch containing stable releases.
+   - `develop`: The default branch for development. All new features and fixes are merged here before release.
+
+2. **Feature Branches**:
+   - **feature/feature-name**: Branch off from `develop` for developing new features. Once completed and tested, open a pull request to `develop`.
+
+3. **Hotfix Branches**:
+   - **hotfix/hotfix-description**: Created from `main` to fix critical issues. After the fix, merge back into both `main` and `develop`.
+
+4. **Release Branches**:
+   - **release/version-number**: Created from `develop` when preparing for a new production release. Merges back into `main` and `develop` upon release.
+
+---
+
+### CI/CD Configuration
+
+We use **GitHub Actions** for continuous integration and continuous deployment (CI/CD) to automate testing, building, and deploying the application.
+
+#### CI: Continuous Integration
+1. **Automated Testing**:
+   - GitHub Actions runs tests on each push and pull request.
+   - Located in the `.github/workflows/ci.yml` file:
+     ```yaml
+     name: Java CI
+
+     on:
+       push:
+         branches:
+           - develop
+       pull_request:
+         branches:
+           - develop
+
+     jobs:
+       build:
+         runs-on: ubuntu-latest
+
+         steps:
+         - uses: actions/checkout@v2
+         - name: Set up JDK 11
+           uses: actions/setup-java@v1
+           with:
+             java-version: '11'
+         - name: Build with Maven
+           run: mvn clean install
+         - name: Run Tests
+           run: mvn test
+     ```
+
+#### CD: Continuous Deployment
+1. **Automated Deployment**:
+   - After successfully passing tests on the `main` branch, the application is automatically deployed to **Heroku** (or any other cloud provider).
+   - Located in the `.github/workflows/deploy.yml` file:
+     ```yaml
+     name: Deploy to Heroku
+
+     on:
+       push:
+         branches:
+           - main
+
+     jobs:
+       deploy:
+         runs-on: ubuntu-latest
+
+         steps:
+         - uses: actions/checkout@v2
+         - name: Deploy to Heroku
+           run: |
+             heroku deploy:jar target/CRUDApplication.jar --app ajazire
+           env:
+             HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+     ```
+
+2. **Secrets**:
+   - Set up secrets like `HEROKU_API_KEY` in GitHub repository settings to securely deploy to the cloud provider.
+
+---
+
+### Deployment Process
+
+#### Deploying Locally
+After building the application:
+```bash
+java -jar target/library-system-backend-0.0.1-SNAPSHOT.jar
+```
+
+#### Deploying via Docker
+1. **Build Docker image**:
+   ```bash
+   docker build -t library-system-backend .
+   ```
+
+2. **Run Docker container**:
+   ```bash
+   docker run -d -p 8080:8080 library-system-backend
+   ```
+
+#### Deploying to Heroku
+- Push to the `main` branch to trigger an automatic deployment through GitHub Actions.
+- Ensure the Heroku app is set up and linked to the repository.
+
+---
+
+### Code Reviews and Pull Requests
+
+1. All changes must be reviewed via **Pull Requests** (PRs). Ensure that:
+   - The PR title is descriptive.
+   - The PR includes details of the changes made.
+   - Tests have been added for new features or bug fixes.
+
+2. At least one project maintainer must review the PR before it is merged.
+
+3. Follow the established **coding standards** and address all comments before the PR is merged.
+
+---
+
+### Version Control
+
+We follow **Semantic Versioning** for tagging releases:
+- **vMAJOR.MINOR.PATCH** (e.g., `v1.0.0`)
+  - **MAJOR**: Incompatible API changes.
+  - **MINOR**: New functionality that is backward-compatible.
+  - **PATCH**: Bug fixes or small changes.
+
+#### Creating a New Release
+1. Tag the version before merging into `main`:
+   ```bash
+   git tag -a v1.0.0 -m "Release version 1.0.0"
+   git push origin --tags
+   ```
+
+2. Create a new GitHub Release with detailed release notes.
+
+---
+
+Thank you for contributing to the project! Your help is invaluable, and we appreciate your effort to maintain high-quality code and documentation.
+
+---
