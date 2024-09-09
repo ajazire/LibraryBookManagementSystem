@@ -30,7 +30,7 @@ This project involves the development of a Java-based library system backend app
 ### Challenges and Learning Process
 
 1. **Challenge: CI/CD Integration**:
-   - Setting up **GitHub Actions** and automating the entire deployment process presented a learning curve. I had to understand how to configure workflows and deploy the application efficiently.
+   - Setting up **GitHub Actions** and automating the entire deployment process presented a learning curve. We had to understand how to configure workflows and deploy the application efficiently.
    
    **Solution**: Leveraged documentation and examples to create customized workflows that suit the project’s needs, ultimately automating the build, test, and deploy processes.
 
