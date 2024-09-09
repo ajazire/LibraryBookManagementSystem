@@ -118,3 +118,8 @@ Open a pull request
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+CI status badge
+
+![image](https://github.com/user-attachments/assets/06b30541-42b5-45c5-9851-cd1cf1333ba8)
+
