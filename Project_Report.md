@@ -3,6 +3,13 @@
 ### Introduction
 This project involves the development of a Java-based library system backend application. It utilizes Spring Boot and a relational database to provide RESTful APIs for managing books, users, and loans. The project incorporates GitHub's tools for continuous integration (CI), continuous deployment (CD), and code analysis.
 
+### Contributors
+- Happiness Chiza (R137091W)
+- Alan Jazire (R091761Y)
+- Nyasha Mangoma (R245096M)
+- Vimbai D Mukutiri (R2216897R)
+- Munjira Mutambwa (R188200R)
+
 ### Development Process
 
 1. **Initial Setup**:
