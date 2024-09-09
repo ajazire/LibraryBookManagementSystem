@@ -129,5 +129,13 @@ To build the Java backend application, follow these steps:
 4. Push to the branch (`git push origin feature-branch`)
 5. Open a pull request
 
+### Contributors
+
+Happiness Chiza (R137091W)
+Alan Jazire (R091761Y)
+Nyasha Mangoma (R245096M)
+Vimbai D Mukutiri (R2216897R)
+Munjira Mutambwa (R188200R)
+
 ### License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
