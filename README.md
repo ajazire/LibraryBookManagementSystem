@@ -25,7 +25,7 @@ Before you start, ensure you have the following installed:
 ### Getting Started
 1. **Clone the repository**:
    ```bash
-   git clone [https://github.com/your-username/library-system-backend.git](https://github.com/ajazire/LibraryBookManagementSystem.git)
+   git clone https://github.com/ajazire/LibraryBookManagementSystem.git
    cd CRUDApplication
    ```
 
