@@ -137,5 +137,9 @@ Nyasha Mangoma (R245096M)
 Vimbai D Mukutiri (R2216897R)
 Munjira Mutambwa (R188200R)
 
+### Jenkins Pipeline CI Status
+
+![Screenshot from 2024-09-09 18-54-21](https://github.com/user-attachments/assets/4230d492-3d34-40ad-a85a-46845ddab26c)
+
 ### License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
