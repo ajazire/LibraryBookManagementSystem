@@ -9,6 +9,8 @@ This project involves the development of a Java-based library system backend app
 - Nyasha Mangoma (R245096M)
 - Vimbai D Mukutiri (R2216897R)
 - Munjira Mutambwa (R188200R)
+- Vincent Kudzai   (R244183M)
+- Zhou
 
 ### Development Process
 
